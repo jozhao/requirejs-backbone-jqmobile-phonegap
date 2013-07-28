@@ -2,9 +2,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/page/trackTpl.html'
+    'text!templates/page/trackTpl.html',
+    'model/path.model'
 ], function ($, _, Backbone, tpl) {
-
+    var Paths = new Pathlist;
     var TrackView = Backbone.View.extend({
         el: $("#content"),
         template: _.template(tpl),
@@ -21,7 +22,11 @@ define([
             'click #btn_track_stop': 'stopTrack'
         },
         startTrack: function() {
-            console.log('start track');
+            this.input = this.$("#track_id");
+            if (!this.input.val()) return;
+
+            Paths.create({id: this.input.val(), done: false});
+            this.input.val('');
             $('#btn_track_start').parent().hide();
             $('#btn_track_stop').parent().show();
         },
