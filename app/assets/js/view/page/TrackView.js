@@ -25,7 +25,7 @@ define([
             this.input = this.$("#track_id");
             if (!this.input.val()) return;
 
-            Paths.create({id: this.input.val(), done: false});
+            Paths.create({id: this.guid(), title: this.input.val(), done: false});
             this.input.val('');
             $('#btn_track_start').parent().hide();
             $('#btn_track_stop').parent().show();
@@ -34,6 +34,12 @@ define([
             console.log('stop track');
             $('#btn_track_start').parent().show();
             $('#btn_track_stop').parent().hide();
+        },
+        S4: function() {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+        },
+        guid: function() {
+            return (this.S4()+this.S4()+"-"+this.S4()+"-"+this.S4()+"-"+this.S4()+"-"+this.S4()+this.S4()+this.S4());
         }
 
     });
