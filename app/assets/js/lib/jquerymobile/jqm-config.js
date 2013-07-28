@@ -8,4 +8,5 @@ $(document).on('mobileinit', function () {
     $.mobile.defaultPageTransition = 'slide';
     $.mobile.buttonMarkup.hoverDelay = 100;
     $.mobile.pageContainer = $('#container');
+    $.support.cors = true;
 });
