@@ -4,7 +4,8 @@ define([
         'backbone',
         'config/router',
         'jqmconfig',
-        'jqm'
+        'jqm',
+        'localstorage'
         ], function($, _, Backbone, Router){
 	var initialize = function(){
 		Router.initialize();

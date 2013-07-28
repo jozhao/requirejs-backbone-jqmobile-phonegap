@@ -18,6 +18,7 @@ define([
             'home': 'home',
             'setting': 'setting',
             'track': 'track',
+            'track/:id': 'trackDetail',
             'history': 'history',
             'about': 'about'
 		    },
@@ -47,6 +48,12 @@ define([
         });
 
         app_router.on('route:track', function () {
+            var trackView = new TrackView();
+            app_router.changePage(trackView);
+        });
+
+        app_router.on('route:trackDetail', function (id) {
+            console.log(id);
             var trackView = new TrackView();
             app_router.changePage(trackView);
         });
